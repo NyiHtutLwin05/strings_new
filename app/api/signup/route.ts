@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     "select id, username from users where username ilike $1",
     [json.username]
   );
-  if (res.rowCount > 0) {
+  if (res?.rowCount ?? 0 > 0) {
     return NextResponse.json({ error: "user already exists" }, { status: 400 });
   }
   const saltRounds = 10;
