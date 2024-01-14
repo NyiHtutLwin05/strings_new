@@ -4,7 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(request: NextRequest) {
   const pathName = request.nextUrl.pathname;
 
-  const authenticatedAPTRoutes = [pathName.startsWith("/api/users")];
+  const authenticatedAPTRoutes = [
+    pathName.startsWith("/api/users"),
+    pathName.startsWith("/api/posts"),
+  ];
 
   if (authenticatedAPTRoutes.includes(true)) {
     const cookie = request.cookies.get("jwt-token");
@@ -16,10 +19,7 @@ export async function middleware(request: NextRequest) {
       await jwtVerify(cookie.value, secret);
     } catch (error) {
       console.error(error);
-      return NextResponse.json(
-        { error: "internal server error" },
-        { status: 500 }
-      );
+      return NextResponse.json({ error: "unauthenticated" }, { status: 401 });
     }
   }
 }
