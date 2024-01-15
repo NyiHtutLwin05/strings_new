@@ -9,11 +9,13 @@ function PostList({ index, username }: { index: number; username: string }) {
   if (isLoading) return <div>Loading...</div>;
   return (
     <ul>
-      {data.data.map((post: PostI) => (
-        <li className="my-5">
-          <Post post={post} />
-        </li>
-      ))}
+      {data.data.map((post: PostI) => {
+        return (
+          <li className="my-5" key={post.id}>
+            <Post post={post} />
+          </li>
+        );
+      })}
     </ul>
   );
 }
