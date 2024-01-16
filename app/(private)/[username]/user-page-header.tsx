@@ -37,16 +37,21 @@ export default function UserPageHeader({ username }: { username: string }) {
     }
   }
   return (
-    <header>
-      <div>
-        <h1>{username}</h1>
-        {dataFollows.data.length > 0 && (
-          <button onClick={handleUnfollow}>Unfollow</button>
-        )}
-        {dataFollows.data.length == 0 && (
-          <button onClick={handleFollow}>Follow</button>
-        )}
-      </div>
+    <header className=" w-full rounded-lg bg-slate-800 p-2 flex flex-row items-center justify-between">
+      <h1 className=" text-lg font-bold">{username}</h1>
+      {dataFollows.data.length > 0 && (
+        <button
+          onClick={handleUnfollow}
+          className=" bg-slate-900 p-2 rounded-lg"
+        >
+          Unfollow
+        </button>
+      )}
+      {dataFollows.data.length == 0 && (
+        <button onClick={handleFollow} className=" bg-slate-900 p-2 rounded-lg">
+          Follow
+        </button>
+      )}
     </header>
   );
 }
