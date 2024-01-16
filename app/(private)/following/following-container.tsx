@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import FollowingList from "./following-list";
 
@@ -6,7 +7,7 @@ function FollowingContainer() {
 
   const pages = [];
   for (let i = 0; i < cnt; i++) {
-    pages.push(<FollowingList index={i} />);
+    pages.push(<FollowingList index={i} key={i} />);
   }
   return (
     <div>

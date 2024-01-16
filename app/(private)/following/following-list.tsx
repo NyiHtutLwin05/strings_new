@@ -1,5 +1,5 @@
-import User from "@/app/components/user";
 import useSWR from "swr";
+import User from "@/app/components/user";
 
 function FollowingList({ index }: { index: number }) {
   const { data: userData } = useSWR("/api/users/profile");
