@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import useSWR, { mutate } from "swr";
 
 export default function UserPageHeader({ username }: { username: string }) {
@@ -16,6 +17,9 @@ export default function UserPageHeader({ username }: { username: string }) {
   if (isLoadingFollows || isLoadingUser) return <div>loading...</div>;
 
   console.log(dataUser, dataFollows);
+  if (dataUser.data.length == 0) {
+    notFound();
+  }
   const user = dataUser.data[0];
 
   async function handleUnfollow() {
