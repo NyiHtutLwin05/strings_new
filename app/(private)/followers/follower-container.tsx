@@ -7,7 +7,7 @@ function FollowerContainer() {
 
   const pages = [];
   for (let i = 0; i < cnt; i++) {
-    pages.push(<FollowersList index={i} />);
+    pages.push(<FollowersList index={i} key={i} />);
   }
   return (
     <div>
