@@ -24,7 +24,7 @@ export default function UserPageHeader({ username }: { username: string }) {
 
   async function handleUnfollow() {
     const res = await fetch("/api/follows/" + user.id, {
-      method: "delete",
+      method: "DELETE",
     });
     if (res.ok) {
       mutate("/api/follows?user_id=" + user.id);
@@ -33,7 +33,7 @@ export default function UserPageHeader({ username }: { username: string }) {
 
   async function handleFollow() {
     const res = await fetch("/api/follows/", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({ user_id: user.id }),
     });
     if (res.ok) {

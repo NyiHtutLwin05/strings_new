@@ -9,7 +9,7 @@ function Form() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const res = await fetch("/api/login", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({ username: username, password: password }),
     });
     if (res.ok) {

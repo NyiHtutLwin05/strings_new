@@ -19,7 +19,7 @@ function Form() {
       return;
     }
     const res = await fetch("/api/signup", {
-      method: "post",
+      method: "POST",
       body: JSON.stringify({ username: username, password: password }),
     });
     if (res.ok) {
